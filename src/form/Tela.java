@@ -6,8 +6,10 @@
 package form;
 
 import java.awt.Color;
+import java.text.ParseException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -15,13 +17,15 @@ import javax.swing.JOptionPane;
  */
 public class Tela extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Tela
-     */
+    private MaskFormatter mascara_cpf;
+    private MaskFormatter mascara_cnpj;
+    
     public Tela() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setBackground(Color.BLUE);
+        getMascara_cpf();
+        getMascara_cnpj();
         tbinfo.setModel(new CategoriaTableModel());
         redimensionaTabela();
     }
@@ -40,6 +44,7 @@ public class Tela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grbotoes = new javax.swing.ButtonGroup();
         lbcabecalho = new javax.swing.JLabel();
         jtaba = new javax.swing.JTabbedPane();
         jpprimeiraaba = new javax.swing.JPanel();
@@ -60,6 +65,10 @@ public class Tela extends javax.swing.JFrame {
         tfdescricao = new javax.swing.JTextField();
         btinserir = new javax.swing.JButton();
         jptestejradiobutton = new javax.swing.JPanel();
+        rbfisico = new javax.swing.JRadioButton();
+        rbjuridico = new javax.swing.JRadioButton();
+        lbcpfcnpj = new javax.swing.JLabel();
+        tfcpfcnpj = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela");
@@ -252,15 +261,56 @@ public class Tela extends javax.swing.JFrame {
 
         jtaba.addTab("Teste JTable", jptestejtable);
 
+        grbotoes.add(rbfisico);
+        rbfisico.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbfisico.setText("Físico");
+        rbfisico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbfisicoActionPerformed(evt);
+            }
+        });
+
+        grbotoes.add(rbjuridico);
+        rbjuridico.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbjuridico.setText("Jurídico");
+        rbjuridico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbjuridicoActionPerformed(evt);
+            }
+        });
+
+        lbcpfcnpj.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbcpfcnpj.setText("CPF:");
+
         javax.swing.GroupLayout jptestejradiobuttonLayout = new javax.swing.GroupLayout(jptestejradiobutton);
         jptestejradiobutton.setLayout(jptestejradiobuttonLayout);
         jptestejradiobuttonLayout.setHorizontalGroup(
             jptestejradiobuttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 581, Short.MAX_VALUE)
+            .addGroup(jptestejradiobuttonLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(jptestejradiobuttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jptestejradiobuttonLayout.createSequentialGroup()
+                        .addComponent(lbcpfcnpj)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfcpfcnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jptestejradiobuttonLayout.createSequentialGroup()
+                        .addComponent(rbfisico)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rbjuridico)))
+                .addContainerGap(302, Short.MAX_VALUE))
         );
         jptestejradiobuttonLayout.setVerticalGroup(
             jptestejradiobuttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 176, Short.MAX_VALUE)
+            .addGroup(jptestejradiobuttonLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jptestejradiobuttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbfisico)
+                    .addComponent(rbjuridico))
+                .addGap(29, 29, 29)
+                .addGroup(jptestejradiobuttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbcpfcnpj)
+                    .addComponent(tfcpfcnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         jtaba.addTab("Teste JRadioButton", jptestejradiobutton);
@@ -340,9 +390,44 @@ public class Tela extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btinserirActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void rbfisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbfisicoActionPerformed
+        lbcpfcnpj.setText("CPF:");
+        mascara_cpf.install(tfcpfcnpj);
+        tfcpfcnpj.requestFocus();
+    }//GEN-LAST:event_rbfisicoActionPerformed
+
+    private void rbjuridicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbjuridicoActionPerformed
+        lbcpfcnpj.setText("CNPJ:");
+        mascara_cnpj.install(tfcpfcnpj);
+        tfcpfcnpj.requestFocus();
+    }//GEN-LAST:event_rbjuridicoActionPerformed
+
+    private MaskFormatter getMascara_cpf(){
+        if(mascara_cpf == null){
+            mascara_cpf = new MaskFormatter();
+            try{
+                mascara_cpf.setMask("###.###.###-##");
+                mascara_cpf.setPlaceholderCharacter('-');
+            }catch(ParseException e){
+                e.printStackTrace();
+            }
+        }
+        return mascara_cpf;
+    }
+    
+    private MaskFormatter getMascara_cnpj(){
+        if(mascara_cnpj == null){
+            mascara_cnpj = new MaskFormatter();
+            try{
+                mascara_cnpj.setMask("##.###.###/####-##");
+                mascara_cnpj.setPlaceholderCharacter('-');
+            }catch(ParseException e){
+                e.printStackTrace();
+            }
+        }
+        return mascara_cnpj;
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -383,6 +468,7 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JButton btinserir;
     private javax.swing.JComboBox<String> cbexibircategorias;
     private javax.swing.JComboBox<String> cbexibirdias;
+    private javax.swing.ButtonGroup grbotoes;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpprimeiraaba;
     private javax.swing.JPanel jptestecombobox;
@@ -392,9 +478,13 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jtaba;
     private javax.swing.JLabel lbcabecalho;
     private javax.swing.JLabel lbcodigo;
+    private javax.swing.JLabel lbcpfcnpj;
     private javax.swing.JLabel lbdescricao;
+    private javax.swing.JRadioButton rbfisico;
+    private javax.swing.JRadioButton rbjuridico;
     private javax.swing.JTable tbinfo;
     private javax.swing.JTextField tfcodigo;
+    private javax.swing.JFormattedTextField tfcpfcnpj;
     private javax.swing.JTextField tfdescricao;
     // End of variables declaration//GEN-END:variables
 }
