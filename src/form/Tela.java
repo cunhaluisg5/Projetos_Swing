@@ -22,6 +22,13 @@ public class Tela extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setBackground(Color.BLUE);
+        tbinfo.setModel(new CategoriaTableModel());
+        redimensionaTabela();
+    }
+    
+    private void redimensionaTabela(){
+        tbinfo.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tbinfo.getColumnModel().getColumn(1).setPreferredWidth(300);
     }
 
     /**
@@ -45,6 +52,13 @@ public class Tela extends javax.swing.JFrame {
         cbexibircategorias = new javax.swing.JComboBox<>();
         btincluircategorias = new javax.swing.JButton();
         jptestejtable = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbinfo = new javax.swing.JTable();
+        lbcodigo = new javax.swing.JLabel();
+        tfcodigo = new javax.swing.JTextField();
+        lbdescricao = new javax.swing.JLabel();
+        tfdescricao = new javax.swing.JTextField();
+        btinserir = new javax.swing.JButton();
         jptestejradiobutton = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,7 +98,7 @@ public class Tela extends javax.swing.JFrame {
                 .addGroup(jpprimeiraabaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btexibirpergunta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btexibirmensagem, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         jpprimeiraabaLayout.setVerticalGroup(
             jpprimeiraabaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +116,7 @@ public class Tela extends javax.swing.JFrame {
         jptestesplitpanel.setLayout(jptestesplitpanelLayout);
         jptestesplitpanelLayout.setHorizontalGroup(
             jptestesplitpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 581, Short.MAX_VALUE)
         );
         jptestesplitpanelLayout.setVerticalGroup(
             jptestesplitpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +160,7 @@ public class Tela extends javax.swing.JFrame {
                 .addGroup(jptestecomboboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btincluirdias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btincluircategorias, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         jptestecomboboxLayout.setVerticalGroup(
             jptestecomboboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,15 +178,76 @@ public class Tela extends javax.swing.JFrame {
 
         jtaba.addTab("Teste ComboBox", jptestecombobox);
 
+        tbinfo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "null", "null"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbinfo.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tbinfo);
+        if (tbinfo.getColumnModel().getColumnCount() > 0) {
+            tbinfo.getColumnModel().getColumn(0).setResizable(false);
+            tbinfo.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        lbcodigo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbcodigo.setText("Código:");
+
+        lbdescricao.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbdescricao.setText("Descrição:");
+
+        btinserir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btinserir.setText("Inserir");
+        btinserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btinserirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jptestejtableLayout = new javax.swing.GroupLayout(jptestejtable);
         jptestejtable.setLayout(jptestejtableLayout);
         jptestejtableLayout.setHorizontalGroup(
             jptestejtableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(jptestejtableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jptestejtableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btinserir)
+                    .addComponent(lbdescricao)
+                    .addComponent(lbcodigo)
+                    .addComponent(tfcodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(tfdescricao))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jptestejtableLayout.setVerticalGroup(
             jptestejtableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 176, Short.MAX_VALUE)
+            .addGroup(jptestejtableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jptestejtableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jptestejtableLayout.createSequentialGroup()
+                        .addComponent(lbcodigo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addComponent(lbdescricao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfdescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(btinserir))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jtaba.addTab("Teste JTable", jptestejtable);
@@ -181,7 +256,7 @@ public class Tela extends javax.swing.JFrame {
         jptestejradiobutton.setLayout(jptestejradiobuttonLayout);
         jptestejradiobuttonLayout.setHorizontalGroup(
             jptestejradiobuttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 581, Short.MAX_VALUE)
         );
         jptestejradiobuttonLayout.setVerticalGroup(
             jptestejradiobuttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,9 +271,9 @@ public class Tela extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbcabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jtaba))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbcabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtaba, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -208,7 +283,7 @@ public class Tela extends javax.swing.JFrame {
                 .addComponent(lbcabecalho)
                 .addGap(18, 18, 18)
                 .addComponent(jtaba, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -252,6 +327,19 @@ public class Tela extends javax.swing.JFrame {
         cbexibircategorias.setModel(modelo);
     }//GEN-LAST:event_btincluircategoriasActionPerformed
 
+    private void btinserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btinserirActionPerformed
+        CategoriaTableModel modelo = (CategoriaTableModel) tbinfo.getModel();
+        if(!tfcodigo.getText().equals("") && !tfdescricao.getText().equals("")){
+            Object[] linha = new Object[]{tfcodigo.getText(), tfdescricao.getText()};
+            modelo.addRow(linha);
+            tfcodigo.setText("");
+            tfdescricao.setText("");
+            tfcodigo.grabFocus();
+        }else{
+            JOptionPane.showMessageDialog(null, "Impossível avançar sem todos os campos!");
+        }
+    }//GEN-LAST:event_btinserirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -292,8 +380,10 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JButton btexibirpergunta;
     private javax.swing.JButton btincluircategorias;
     private javax.swing.JButton btincluirdias;
+    private javax.swing.JButton btinserir;
     private javax.swing.JComboBox<String> cbexibircategorias;
     private javax.swing.JComboBox<String> cbexibirdias;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpprimeiraaba;
     private javax.swing.JPanel jptestecombobox;
     private javax.swing.JPanel jptestejradiobutton;
@@ -301,5 +391,10 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JPanel jptestesplitpanel;
     private javax.swing.JTabbedPane jtaba;
     private javax.swing.JLabel lbcabecalho;
+    private javax.swing.JLabel lbcodigo;
+    private javax.swing.JLabel lbdescricao;
+    private javax.swing.JTable tbinfo;
+    private javax.swing.JTextField tfcodigo;
+    private javax.swing.JTextField tfdescricao;
     // End of variables declaration//GEN-END:variables
 }
