@@ -6,6 +6,7 @@
 package form;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,6 +35,8 @@ public class Tela extends javax.swing.JFrame {
         lbcabecalho = new javax.swing.JLabel();
         jtaba = new javax.swing.JTabbedPane();
         jpprimeiraaba = new javax.swing.JPanel();
+        btexibirmensagem = new javax.swing.JButton();
+        btexibirpergunta = new javax.swing.JButton();
         jptestesplitpanel = new javax.swing.JPanel();
         jptestecombobox = new javax.swing.JPanel();
         jptestejtable = new javax.swing.JPanel();
@@ -51,15 +54,41 @@ public class Tela extends javax.swing.JFrame {
         jtaba.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jtaba.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
 
+        btexibirmensagem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btexibirmensagem.setText("Exibir Mensagem");
+        btexibirmensagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btexibirmensagemActionPerformed(evt);
+            }
+        });
+
+        btexibirpergunta.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btexibirpergunta.setText("Exibir Pergunta");
+        btexibirpergunta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btexibirperguntaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpprimeiraabaLayout = new javax.swing.GroupLayout(jpprimeiraaba);
         jpprimeiraaba.setLayout(jpprimeiraabaLayout);
         jpprimeiraabaLayout.setHorizontalGroup(
             jpprimeiraabaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGroup(jpprimeiraabaLayout.createSequentialGroup()
+                .addGap(184, 184, 184)
+                .addGroup(jpprimeiraabaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btexibirpergunta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btexibirmensagem, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jpprimeiraabaLayout.setVerticalGroup(
             jpprimeiraabaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 176, Short.MAX_VALUE)
+            .addGroup(jpprimeiraabaLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(btexibirmensagem)
+                .addGap(33, 33, 33)
+                .addComponent(btexibirpergunta)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jtaba.addTab("Primeira Aba", jpprimeiraaba);
@@ -68,7 +97,7 @@ public class Tela extends javax.swing.JFrame {
         jptestesplitpanel.setLayout(jptestesplitpanelLayout);
         jptestesplitpanelLayout.setHorizontalGroup(
             jptestesplitpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
         );
         jptestesplitpanelLayout.setVerticalGroup(
             jptestesplitpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,7 +110,7 @@ public class Tela extends javax.swing.JFrame {
         jptestecombobox.setLayout(jptestecomboboxLayout);
         jptestecomboboxLayout.setHorizontalGroup(
             jptestecomboboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
         );
         jptestecomboboxLayout.setVerticalGroup(
             jptestecomboboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +123,7 @@ public class Tela extends javax.swing.JFrame {
         jptestejtable.setLayout(jptestejtableLayout);
         jptestejtableLayout.setHorizontalGroup(
             jptestejtableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
         );
         jptestejtableLayout.setVerticalGroup(
             jptestejtableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +136,7 @@ public class Tela extends javax.swing.JFrame {
         jptestejradiobutton.setLayout(jptestejradiobuttonLayout);
         jptestejradiobuttonLayout.setHorizontalGroup(
             jptestejradiobuttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
         );
         jptestejradiobuttonLayout.setVerticalGroup(
             jptestejradiobuttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +154,7 @@ public class Tela extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbcabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jtaba))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,6 +168,25 @@ public class Tela extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btexibirmensagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btexibirmensagemActionPerformed
+        JOptionPane.showMessageDialog(null, "Mensagem", "Título da Mensagem", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btexibirmensagemActionPerformed
+
+    private void btexibirperguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btexibirperguntaActionPerformed
+        int recebe = JOptionPane.showConfirmDialog(null, "Mensagem", "Título da Mensagem", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+        switch (recebe) {
+            case JOptionPane.YES_OPTION:
+                JOptionPane.showMessageDialog(null, "Você clicou no botão SIM");
+                break;
+            case JOptionPane.NO_OPTION:
+                JOptionPane.showMessageDialog(null, "Você clicou no botão NÃO");
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Você clicou no botão CANCELAR");
+                break;
+        }
+    }//GEN-LAST:event_btexibirperguntaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,6 +224,8 @@ public class Tela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btexibirmensagem;
+    private javax.swing.JButton btexibirpergunta;
     private javax.swing.JPanel jpprimeiraaba;
     private javax.swing.JPanel jptestecombobox;
     private javax.swing.JPanel jptestejradiobutton;
