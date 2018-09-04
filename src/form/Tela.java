@@ -6,6 +6,7 @@
 package form;
 
 import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -39,6 +40,10 @@ public class Tela extends javax.swing.JFrame {
         btexibirpergunta = new javax.swing.JButton();
         jptestesplitpanel = new javax.swing.JPanel();
         jptestecombobox = new javax.swing.JPanel();
+        cbexibirdias = new javax.swing.JComboBox<>();
+        btincluirdias = new javax.swing.JButton();
+        cbexibircategorias = new javax.swing.JComboBox<>();
+        btincluircategorias = new javax.swing.JButton();
         jptestejtable = new javax.swing.JPanel();
         jptestejradiobutton = new javax.swing.JPanel();
 
@@ -79,7 +84,7 @@ public class Tela extends javax.swing.JFrame {
                 .addGroup(jpprimeiraabaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btexibirpergunta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btexibirmensagem, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
         jpprimeiraabaLayout.setVerticalGroup(
             jpprimeiraabaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,7 +102,7 @@ public class Tela extends javax.swing.JFrame {
         jptestesplitpanel.setLayout(jptestesplitpanelLayout);
         jptestesplitpanelLayout.setHorizontalGroup(
             jptestesplitpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         jptestesplitpanelLayout.setVerticalGroup(
             jptestesplitpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,15 +111,55 @@ public class Tela extends javax.swing.JFrame {
 
         jtaba.addTab("Teste SplitPane", jptestesplitpanel);
 
+        cbexibirdias.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        cbexibirdias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Exibir Dias" }));
+
+        btincluirdias.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btincluirdias.setText("Incluir Dias");
+        btincluirdias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btincluirdiasActionPerformed(evt);
+            }
+        });
+
+        cbexibircategorias.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        cbexibircategorias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Exibir Categorias" }));
+
+        btincluircategorias.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btincluircategorias.setText("Incluir Categorias");
+        btincluircategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btincluircategoriasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jptestecomboboxLayout = new javax.swing.GroupLayout(jptestecombobox);
         jptestecombobox.setLayout(jptestecomboboxLayout);
         jptestecomboboxLayout.setHorizontalGroup(
             jptestecomboboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGroup(jptestecomboboxLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addGroup(jptestecomboboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbexibircategorias, 0, 150, Short.MAX_VALUE)
+                    .addComponent(cbexibirdias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(53, 53, 53)
+                .addGroup(jptestecomboboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btincluirdias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btincluircategorias, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
         jptestecomboboxLayout.setVerticalGroup(
             jptestecomboboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 176, Short.MAX_VALUE)
+            .addGroup(jptestecomboboxLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jptestecomboboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbexibirdias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btincluirdias))
+                .addGap(38, 38, 38)
+                .addGroup(jptestecomboboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbexibircategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btincluircategorias))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jtaba.addTab("Teste ComboBox", jptestecombobox);
@@ -123,7 +168,7 @@ public class Tela extends javax.swing.JFrame {
         jptestejtable.setLayout(jptestejtableLayout);
         jptestejtableLayout.setHorizontalGroup(
             jptestejtableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         jptestejtableLayout.setVerticalGroup(
             jptestejtableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +181,7 @@ public class Tela extends javax.swing.JFrame {
         jptestejradiobutton.setLayout(jptestejradiobuttonLayout);
         jptestejradiobuttonLayout.setHorizontalGroup(
             jptestejradiobuttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         jptestejradiobuttonLayout.setVerticalGroup(
             jptestejradiobuttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,6 +233,25 @@ public class Tela extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btexibirperguntaActionPerformed
 
+    private void btincluirdiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btincluirdiasActionPerformed
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        modelo.addElement("Domingo");
+        modelo.addElement("Segunda");
+        modelo.addElement("Terça");
+        modelo.addElement("Quarta");
+        modelo.addElement("Quinta");
+        modelo.addElement("Sexta");
+        modelo.addElement("Sábado");
+        cbexibirdias.setModel(modelo);
+    }//GEN-LAST:event_btincluirdiasActionPerformed
+
+    private void btincluircategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btincluircategoriasActionPerformed
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        modelo.addElement("Informática");
+        modelo.addElement("Celulares");
+        cbexibircategorias.setModel(modelo);
+    }//GEN-LAST:event_btincluircategoriasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -226,6 +290,10 @@ public class Tela extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btexibirmensagem;
     private javax.swing.JButton btexibirpergunta;
+    private javax.swing.JButton btincluircategorias;
+    private javax.swing.JButton btincluirdias;
+    private javax.swing.JComboBox<String> cbexibircategorias;
+    private javax.swing.JComboBox<String> cbexibirdias;
     private javax.swing.JPanel jpprimeiraaba;
     private javax.swing.JPanel jptestecombobox;
     private javax.swing.JPanel jptestejradiobutton;
